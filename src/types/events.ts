@@ -1,0 +1,42 @@
+export type SystemEventType =
+  | 'PROJECT_CREATED'
+  | 'PROJECT_UPDATED'
+  | 'REQUIREMENT_CREATED'
+  | 'REQUIREMENT_UPDATED'
+  | 'REQUIREMENT_APPROVED'
+  | 'REQUIREMENT_CHANGED'
+  | 'STORY_CREATED'
+  | 'STORY_UPDATED'
+  | 'TASK_CREATED'
+  | 'TASK_ASSIGNED'
+  | 'TASK_UPDATED'
+  | 'TASK_STATUS_CHANGED'
+  | 'SPRINT_STARTED'
+  | 'SPRINT_COMPLETED'
+  | 'BUG_CREATED'
+  | 'BUG_RESOLVED'
+  | 'BUG_VERIFIED'
+  | 'DOCUMENT_CREATED'
+  | 'DOCUMENT_UPDATED'
+  | 'DOCUMENT_APPROVED'
+  | 'CLIENT_COMMENTED'
+  | 'CLIENT_APPROVED'
+  | 'CLIENT_REQUESTED_CHANGE'
+  | 'CHANGE_REQUEST_SUBMITTED'
+  | 'CHANGE_REQUEST_APPROVED'
+  | 'CHANGE_REQUEST_REJECTED'
+  | 'MEETING_CREATED'
+  | 'DEADLINE_APPROACHING'
+  | 'RISK_DETECTED'
+  | 'AI_RECOMMENDATION_GENERATED';
+
+export interface SystemEventPayload<T = any> {
+  type: SystemEventType;
+  projectId?: string;
+  senderUserId?: string;
+  senderRole?: string;
+  entityId?: string;
+  entityKey?: string;
+  data: T;
+  timestamp: string;
+}

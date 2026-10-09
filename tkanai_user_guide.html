@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TKanAI — Complete Role-Based Project User Guide</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+      @bottom-right {
+        content: counter(page);
+        font-size: 9pt;
+        color: #64748b;
+      }
+    }
+    
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      line-height: 1.55;
+      font-size: 10pt;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+    /* Cover / Header section */
+    .cover {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: #eff6ff;
+      color: #2563eb;
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 24pt;
+      font-weight: 900;
+      color: #0f172a;
+      margin: 4px 0 8px 0;
+      letter-spacing: -0.03em;
+    }
+    .subtitle {
+      font-size: 12pt;
+      color: #475569;
+      margin: 0 0 16px 0;
+      font-weight: 500;
+    }
+    .meta-box {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 8.5pt;
+    }
+    .meta-box div span {
+      display: block;
+      color: #64748b;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .meta-box div strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* Headings */
+    h2 {
+      font-size: 15pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 6px;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      page-break-after: avoid;
+    }
+    h4 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #334155;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin: 0 0 10px 0;
+      color: #334155;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px 0;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 7px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    /* Callout & Note boxes */
+    .callout {
+      border-left: 4px solid #3b82f6;
+      background: #eff6ff;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      margin: 14px 0;
+      font-size: 9pt;
+      page-break-inside: avoid;
+    }
+    .callout strong {
+      color: #1d4ed8;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .callout-warning {
+      border-left-color: #f59e0b;
+      background: #fffbeb;
+    }
+    .callout-warning strong {
+      color: #b45309;
+    }
+    .callout-success {
+      border-left-color: #10b981;
+      background: #ecfdf5;
+    }
+    .callout-success strong {
+      color: #047857;
+    }
+
+    /* Workflow Diagram / Cards */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+      page-break-inside: avoid;
+    }
+    .workflow-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 12px 14px;
+    }
+    .workflow-card .step-num {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: #2563eb;
+      color: white;
+      text-align: center;
+      line-height: 22px;
+      font-weight: 700;
+      font-size: 8pt;
+      margin-right: 6px;
+    }
+    .workflow-card h4 {
+      display: inline;
+      font-size: 10pt;
+      color: #0f172a;
+    }
+    .workflow-card p {
+      font-size: 8.5pt;
+      margin: 6px 0 0 0;
+      color: #475569;
+    }
+
+    /* Role Guide Card */
+    .role-section {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 16px;
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .role-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .role-title {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .persona-badge {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      font-size: 8pt;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+    }
+    .role-meta {
+      font-size: 8.5pt;
+      color: #64748b;
+      margin-bottom: 10px;
+    }
+    .steps-list {
+      margin: 8px 0 0 0;
+      padding-left: 20px;
+      font-size: 9pt;
+    }
+    .steps-list li {
+      margin-bottom: 6px;
+    }
+    .step-tag {
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER SECTION -->
+  <div class="cover">
+    <span class="badge">Comprehensive Field Manual</span>
+    <h1>TKanAI SDLC Ecosystem</h1>
+    <div class="subtitle">Complete Role-Based Workflow Guide & Standard Operating Procedures</div>
+    
+    <div class="meta-box">
+      <div>
+        <span>Platform</span>
+        <strong>TKanAI Beta v1.0</strong>
+      </div>
+      <div>
+        <span>Architecture</span>
+        <strong>Client-Side IndexedDB</strong>
+      </div>
+      <div>
+        <span>Simulation Scenario</span>
+        <strong>Zyroute Bus System</strong>
+      </div>
+      <div>
+        <span>Supported Roles</span>
+        <strong>10 Personas</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2>1. System Architecture & Getting Started</h2>
+  
+  <p><strong>TKanAI</strong> is an offline-capable, client-side agile management and AI engineering ecosystem. It requires zero cloud databases or API subscriptions—everything executes securely inside your web browser via Dexie.js (IndexedDB) with cross-tab real-time reactivity via the <code>BroadcastChannel</code> API.</p>
+
+  <h3>How to Launch the System</h3>
+  <ol class="steps-list">
+    <li>Open a terminal in the project directory: <code>cd "c:\Users\ADMIN\Desktop\AI Ecosystem"</code></li>
+    <li>Run the local development server: <code>npm run dev</code></li>
+    <li>Open your browser to: <strong><code>http://localhost:5173/</code></strong></li>
+  </ol>
+
+  <div class="callout callout-warning">
+    <strong>Database Cache & Name Updates</strong>
+    If you modified team names in <code>src/db/seedData.ts</code>, your browser will still hold previous IndexedDB data. Go to <strong>System Settings</strong> in the sidebar and click <strong>Reset Data</strong> to refresh all records instantly.
+  </div>
+
+  <h3>Instant Role Switching</h3>
+  <p>To simulate any role, click your <strong>profile avatar</strong> in the top-right header and select from the 10 personas. The UI views, action authorizations, and notifications adapt immediately without a logout.</p>
+
+  <!-- SECTION 2 -->
+  <div class="page-break"></div>
+  <h2>2. End-to-End SDLC Project Workflow</h2>
+
+  <p>Every project in TKanAI follows a structured 8-stage lifecycle. Each stage is driven by specific personas using specialized AI copilots.</p>
+
+  <div class="workflow-grid">
+    <div class="workflow-card">
+      <span class="step-num">1</span>
+      <h4>Project Initiation & Scope</h4>
+      <p><strong>Roles:</strong> Org Admin (Vanuya), PM (Thivvikan)<br>
+      Create project portfolio, define sprint cadences, and assemble cross-functional rosters.</p>
+    </div>
+
+    <div class="workflow-card">
+      <span class="step-num">2</span>
+      <h4>Requirements & Ambiguity Intelligence</h4>
+      <p><strong>Roles:</strong> BA (Kanushi), PO (Ushamini), Client (Sutharsini)<br>
+      Draft FR/NFRs, execute AI Ambiguity Scoring, and conduct formal approvals.</p>
+    </div>
+
+    <div class="workflow-card">
+      <span class="step-num">3</span>
+      <h4>Backlog Breakdown & User Stories</h4>
+      <p><strong>Roles:</strong> PO (Ushamini), BA (Kanushi)<br>
+      Use the AI Story Generator to convert requirements into user stories with Gherkin acceptance criteria.</p>
+    </div>
+
+    <div class="workflow-card">
+      <span class="step-num">4</span>
+      <h4>Sprint Planning & Kanban Execution</h4>
+      <p><strong>Roles:</strong> PM (Thivvikan), Dev (Kajakaran), Designer (Sarangn)<br>
+      Commit stories to sprints, auto-decompose into subtasks, and advance cards through Kanban swimlanes.</p>
+    </div>
+
+    <div class="workflow-card">
+      <span class="step-num">5</span>
+      <h4>QA Testing & AI Bug Lab</h4>
+      <p><strong>Roles:</strong> QA Lead (Mayoory), Dev (Kajakaran)<br>
+      Author test suites, record execution results, and trigger AI Root Cause Analysis (RCA) on defects.</p>
+    </div>
+
+    <div class="workflow-card">
+      <span class="step-num">6</span>
+      <h4>Meetings & AI Decision Extractor</h4>
+      <p><strong>Roles:</strong> All Team Members<br>
+      Log sprint ceremonies and use AI to extract Architectural Decision Records (ADRs) and action items.</p>
+    </div>
+
+    <div class="workflow-card">
+      <span class="step-num">7</span>
+      <h4>Client Portal & Change Requests (CR)</h4>
+      <p><strong>Roles:</strong> Client (Sutharsini), PM (Thivvikan)<br>
+      Submit scope change requests and run AI Impact Analysis estimating schedule, cost, and test risks.</p>
+    </div>
+
+    <div class="workflow-card">
+      <span class="step-num">8</span>
+      <h4>Risk Radar & Executive Delivery</h4>
+      <p><strong>Roles:</strong> PM (Thivvikan), Stakeholder (Hariarthan)<br>
+      Monitor the AI Risk Radar probability matrix and generate printable executive reports.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-success">
+    <strong>Living Traceability Guarantee</strong>
+    Every artifact connects end-to-end: <code>Requirement ➔ User Story ➔ Task ➔ QA Test Case ➔ Defect</code>. Open the <strong>Traceability Matrix</strong> view at any time to verify 100% test coverage and ensure zero orphan requirements.
+  </div>
+
+  <!-- SECTION 3: STEP-BY-STEP GUIDES FOR ALL 10 ROLES -->
+  <div class="page-break"></div>
+  <h2>3. Role-by-Role Step-by-Step Practical Guides</h2>
+
+  <!-- 1. ORG ADMIN -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">1. Organization Administrator</span>
+      <span class="persona-badge">Persona: Vanuya</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Org Dashboard, Project Portfolio, System Settings, Global Search</div>
+    <p><strong>Mission:</strong> Oversee enterprise health, instantiate projects, configure governance parameters, and maintain database integrity.</p>
+    
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Switch Role:</span> Click the top-right avatar and switch to <strong>Vanuya (Org Admin)</strong>.</li>
+      <li><span class="step-tag">Step 2 — Inspect Org Health:</span> Go to <strong>Organization Dashboard</strong> to view macro KPIs: total projects, completed tasks, open critical bugs, and overall document quality score.</li>
+      <li><span class="step-tag">Step 3 — Create a New Project:</span> Open <strong>Project Portfolio</strong>, click <strong>"Create Project"</strong>, specify project key, title, deadline, and assigned leads.</li>
+      <li><span class="step-tag">Step 4 — Database Backup:</span> Navigate to <strong>System Settings</strong> and click <strong>"Export Database"</strong> to save a complete JSON backup of the organization state.</li>
+    </ol>
+  </div>
+
+  <!-- 2. PROJECT MANAGER -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">2. Project Manager (PM)</span>
+      <span class="persona-badge">Persona: Thivvikan</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Kanban Board, Sprint Analytics, AI Risk Radar, Meetings, Change Requests</div>
+    <p><strong>Mission:</strong> Manage sprint cadences, balance team workloads, evaluate client change requests, and mitigate project delivery risks.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Monitor Active Sprint:</span> Open <strong>Sprint Analytics</strong> to review the burndown velocity chart, remaining story points, and sprint deadline.</li>
+      <li><span class="step-tag">Step 2 — Orchestrate the Kanban Board:</span> Go to <strong>Kanban Board</strong>. Drag cards between swimlanes (<code>To Do</code> ➔ <code>In Progress</code> ➔ <code>Code Review</code> ➔ <code>QA Ready</code> ➔ <code>Done</code>). PMs have unrestricted rights to reassign or move any card.</li>
+      <li><span class="step-tag">Step 3 — Evaluate Client Change Requests:</span> When the Client submits a Change Request (CR-001), open the CR detail view, review the <strong>AI Impact Analysis</strong> (cost, delay, affected tasks), and formally approve or reject with decision notes.</li>
+      <li><span class="step-tag">Step 4 — Review the AI Risk Radar:</span> Open <strong>AI Risk Radar</strong> to review high-impact risks (e.g., concurrency race conditions, developer overallocation) and assign mitigation tasks.</li>
+    </ol>
+  </div>
+
+  <!-- 3. PRODUCT OWNER -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">3. Product Owner (PO)</span>
+      <span class="persona-badge">Persona: Ushamini</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Requirements & AI, Backlog & Stories, Documentation Hub</div>
+    <p><strong>Mission:</strong> Define product vision, prioritize sprint backlogs, approve requirement specifications, and validate deliverable scope.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Review & Approve Requirements:</span> Open <strong>Requirements & AI</strong>. Review requirements drafted by the BA. Click <strong>"Approve Requirement"</strong> to lock the scope for engineering.</li>
+      <li><span class="step-tag">Step 2 — Prioritize the Product Backlog:</span> Open <strong>Backlog & Stories</strong>. Drag and reorder user stories to define sprint priorities. Ensure all high-priority stories have estimated story points.</li>
+      <li><span class="step-tag">Step 3 — Generate User Stories via AI:</span> In the Requirements view, select a requirement and click <strong>"AI Story Generator"</strong> to convert technical clauses into standard user stories with acceptance criteria.</li>
+      <li><span class="step-tag">Step 4 — Approve Living Specifications:</span> Navigate to <strong>Documentation Hub</strong>, review SRS v1.2, and provide formal Product Owner sign-off.</li>
+    </ol>
+  </div>
+
+  <!-- 4. BUSINESS ANALYST -->
+  <div class="page-break"></div>
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">4. Business Analyst (BA)</span>
+      <span class="persona-badge">Persona: Kanushi</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Requirements & AI, Traceability Matrix, Documentation Hub</div>
+    <p><strong>Mission:</strong> Gather functional/non-functional requirements, eliminate specification ambiguity, and link user stories to business goals.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Author Requirements:</span> Open <strong>Requirements & AI</strong> and click <strong>"Create Requirement"</strong>. Specify category (FR/NFR/Security), priority, description, and acceptance criteria.</li>
+      <li><span class="step-tag">Step 2 — Run AI Ambiguity Analyzer:</span> Select any requirement and click <strong>"Analyze Ambiguity"</strong>. The AI inspects for vague terms (e.g., "fast", "user-friendly") and provides actionable, measurable rewrites with a confidence score.</li>
+      <li><span class="step-tag">Step 3 — Inspect Traceability:</span> Open <strong>Traceability Matrix</strong> to check that every requirement is linked downstream to at least one User Story and QA Test Case.</li>
+      <li><span class="step-tag">Step 4 — Maintain Documentation:</span> Use <strong>Documentation Hub</strong> to update the Software Requirements Specification (SRS) in markdown format.</li>
+    </ol>
+  </div>
+
+  <!-- 5. DEVELOPER -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">5. Senior Developer</span>
+      <span class="persona-badge">Persona: Kajakaran</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Kanban Board, Issues & AI Bug Lab, Documentation Hub</div>
+    <p><strong>Mission:</strong> Implement features, resolve defects, conduct code reviews, and author architecture decision records.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Check Assigned Tasks:</span> Open <strong>Kanban Board</strong> and locate tasks assigned to you. Drag your active task from <code>To Do</code> to <code>In Progress</code>.</li>
+      <li><span class="step-tag">Step 2 — Decompose Stories into Tasks:</span> In <strong>Backlog & Stories</strong>, use the <strong>AI Task Decomposer</strong> to split user stories into backend, frontend, and database subtasks.</li>
+      <li><span class="step-tag">Step 3 — Resolve Bugs with AI Root Cause Analysis:</span> Open <strong>Issues & AI Bug Lab</strong>. Select an assigned bug (e.g., BUG-001). Click <strong>"AI Root Cause Analysis"</strong> to view code fix recommendations (e.g., Redis distributed lock with Lua script). Implement the fix and mark the bug as <strong>Resolved</strong>.</li>
+      <li><span class="step-tag">Step 4 — Advance to Code Review:</span> Move your completed task card to the <code>Code Review</code> column on the Kanban board.</li>
+    </ol>
+  </div>
+
+  <!-- 6. QA ENGINEER -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">6. QA Engineer</span>
+      <span class="persona-badge">Persona: Mayoory</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> QA Test Suites, Issues & AI Bug Lab, Traceability Matrix</div>
+    <p><strong>Mission:</strong> Author test cases, execute manual/automated regression runs, report bugs, and perform final defect closure.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Execute Test Suites:</span> Open <strong>QA Test Suites</strong>. Select a suite (e.g., Concurrency & Checkout Suite). Execute test cases and record results: <strong>Passed</strong>, <strong>Failed</strong>, or <strong>Blocked</strong>.</li>
+      <li><span class="step-tag">Step 2 — Auto-File Bug on Test Failure:</span> When a test case fails, click <strong>"Log Bug from Failure"</strong>. The system automatically populates a defect ticket linked directly to the failed test case.</li>
+      <li><span class="step-tag">Step 3 — Verify & Close Resolved Bugs:</span> In <strong>Issues & AI Bug Lab</strong>, filter for bugs in <code>Resolved</code> status. Re-test the fix. If successful, perform the QA sign-off to mark the bug as <strong>Closed</strong>.</li>
+      <li><span class="step-tag">Step 4 — Kanban QA Sign-off:</span> Move verified feature cards from <code>QA Ready</code> to <code>Done</code> on the Kanban board.</li>
+    </ol>
+  </div>
+
+  <!-- 7. UI/UX DESIGNER -->
+  <div class="page-break"></div>
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">7. UI/UX Designer</span>
+      <span class="persona-badge">Persona: Sarangn</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Documentation Hub, Kanban Board, Issues & AI Bug Lab</div>
+    <p><strong>Mission:</strong> Design accessible interfaces, maintain design tokens, and review UI implementations against wireframes.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Document Design Guidelines:</span> In <strong>Documentation Hub</strong>, author and update Design System Specs, interactive wireframe mockups, and mobile responsive guidelines.</li>
+      <li><span class="step-tag">Step 2 — Track Design Tasks:</span> Move design tasks (e.g., "Interactive 2D Bus Seat Selector") on the <strong>Kanban Board</strong> to keep engineering aligned.</li>
+      <li><span class="step-tag">Step 3 — File UI/UX & Accessibility Defects:</span> Open <strong>Issues & AI Bug Lab</strong> to report visual layout bugs, contrast issues, or touch-target defects.</li>
+    </ol>
+  </div>
+
+  <!-- 8. DEVOPS ENGINEER -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">8. DevOps Engineer</span>
+      <span class="persona-badge">Persona: Karikaalan</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Kanban Board, AI Risk Radar, Documentation Hub</div>
+    <p><strong>Mission:</strong> Ensure pipeline reliability, infrastructure scalability, database indexing, and automated deployment stability.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Infrastructure Execution:</span> On the <strong>Kanban Board</strong>, track and complete infrastructure tasks (e.g., Redis cluster configuration, database query indexing).</li>
+      <li><span class="step-tag">Step 2 — Maintain Runbooks:</span> Author deployment runbooks and rollback procedures in the <strong>Documentation Hub</strong>.</li>
+      <li><span class="step-tag">Step 3 — Support Risk Mitigations:</span> Review technical items on the <strong>AI Risk Radar</strong> to assist developers in resolving server-side bottlenecks.</li>
+    </ol>
+  </div>
+
+  <!-- 9. CLIENT / SPONSOR -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">9. Client / Sponsor</span>
+      <span class="persona-badge">Persona: Sutharsini</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Client Portal, Requirements & AI, Executive Reports</div>
+    <p><strong>Mission:</strong> Monitor milestone progress, approve project deliverables, and submit change requests (CR) with transparent impact modeling.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Access the Client Portal:</span> Click <strong>Client Portal</strong> in the sidebar to review overall project delivery progress and active milestones.</li>
+      <li><span class="step-tag">Step 2 — Submit a Change Request:</span> Click <strong>"Submit Change Request"</strong> (e.g., Requesting a 2-Hour Ticket Cancellation Rule). State the business justification and desired deadline.</li>
+      <li><span class="step-tag">Step 3 — Review AI Impact Analysis:</span> View the automatically generated impact breakdown: affected requirements, development hours, and estimated cost adjustments.</li>
+      <li><span class="step-tag">Step 4 — Milestone Sign-off:</span> Formally accept delivery milestones once demonstrated during sprint reviews.</li>
+    </ol>
+  </div>
+
+  <!-- 10. EXECUTIVE STAKEHOLDER -->
+  <div class="role-section">
+    <div class="role-header">
+      <span class="role-title">10. Executive Stakeholder</span>
+      <span class="persona-badge">Persona: Hariarthan</span>
+    </div>
+    <div class="role-meta"><strong>Primary Views:</strong> Org Dashboard, Sprint Analytics, AI Risk Radar, Executive Reports</div>
+    <p><strong>Mission:</strong> High-level organizational governance, sprint velocity oversight, financial ROI tracking, and executive sign-off.</p>
+
+    <ol class="steps-list">
+      <li><span class="step-tag">Step 1 — Review High-Level Dashboards:</span> Open <strong>Organization Dashboard</strong> for enterprise-level delivery metrics and team workloads.</li>
+      <li><span class="step-tag">Step 2 — Track Velocity Trends:</span> Open <strong>Sprint Analytics</strong> to inspect velocity across historical sprints.</li>
+      <li><span class="step-tag">Step 3 — Inspect Critical Risks:</span> Open <strong>AI Risk Radar</strong> to ensure high-severity risks have active mitigation strategies.</li>
+      <li><span class="step-tag">Step 4 — Generate Executive Reports:</span> Navigate to <strong>Executive Reports</strong> to preview and print clean PDF summaries.</li>
+    </ol>
+  </div>
+
+  <!-- SECTION 4: AI COPILOT & POWER FEATURES -->
+  <div class="page-break"></div>
+  <h2>4. TKanAI Copilot & Power Features</h2>
+
+  <h3>Interactive AI Assistant Drawer</h3>
+  <p>Click the <strong>✨ AI Assistant</strong> icon in the top header on any page to open the <strong>TKanAI Project Copilot</strong>. The copilot possesses real-time awareness of all IndexedDB entities.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">User Prompt / Query</th>
+        <th>Copilot Action & Intelligence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><em>"What is the current project status?"</em></td>
+        <td>Summarizes active sprint burndown, total story points, open defects, and overall schedule compliance.</td>
+      </tr>
+      <tr>
+        <td><em>"Which tasks are delayed or blocked?"</em></td>
+        <td>Scans Kanban tasks, filters for blocker flags or approaching deadlines, and alerts assignees.</td>
+      </tr>
+      <tr>
+        <td><em>"What is our highest risk item?"</em></td>
+        <td>Retrieves the highest-scoring risk from the Risk Radar and recites the active mitigation plan.</td>
+      </tr>
+      <tr>
+        <td><em>"How is developer workload distributed?"</em></td>
+        <td>Analyzes active task count and remaining hours per engineer to prevent burnout.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Universal Spotlight Search (Ctrl+K)</h3>
+  <p>Press <code>Ctrl + K</code> (or <code>Cmd + K</code> on macOS) to invoke universal spotlight search. Jump instantly to any task (<code>TASK-101</code>), requirement (<code>REQ-001</code>), bug (<code>BUG-001</code>), or document.</p>
+
+  <!-- SECTION 5: ROLE PERMISSIONS MATRIX -->
+  <h2>5. Comprehensive Role Permissions Matrix</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Permission Capability</th>
+        <th>Admin</th>
+        <th>PM</th>
+        <th>PO</th>
+        <th>BA</th>
+        <th>Dev</th>
+        <th>QA</th>
+        <th>Design</th>
+        <th>DevOps</th>
+        <th>Client</th>
+        <th>Stakeholder</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Manage Org & Users</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Create Project</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Approve Requirements</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Manage Backlog / Sprints</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Move Any Kanban Task</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>Own</td>
+        <td>Own</td>
+        <td>Own</td>
+        <td>Own</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Execute Test Suites</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Verify / Close Bugs</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Submit Change Requests</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Evaluate & Decide CRs</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>Access Client Portal</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td style="color:#059669; font-weight:bold;">YES</td>
+        <td>NO</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 6: FAQ -->
+  <h2>6. Quick Troubleshooting & FAQ</h2>
+
+  <p><strong>Q: Why does my browser still show old team member names?</strong><br>
+  <strong>A:</strong> IndexedDB caches data after the initial load. Go to <strong>System Settings</strong> in the sidebar, click <strong>Reset Data</strong>, and confirm. All updated names will appear immediately.</p>
+
+  <p><strong>Q: Can multiple team members test this together?</strong><br>
+  <strong>A:</strong> Yes! Open two browser tabs side-by-side (e.g., Tab 1 as <em>Developer Kajakaran</em> and Tab 2 as <em>QA Mayoory</em>). When Kajakaran moves a card or resolves a bug in Tab 1, Mayoory's tab in Tab 2 updates in real time via BroadcastChannel.</p>
+
+  <p><strong>Q: How do I export or backup my work?</strong><br>
+  <strong>A:</strong> In <strong>System Settings</strong>, click <strong>Export Database</strong> to save a complete JSON archive of all projects, requirements, tasks, bugs, and meetings.</p>
+
+  <div style="margin-top: 30px; padding-top: 10px; border-top: 1px solid #e2e8f0; font-size: 8pt; color: #64748b; text-align: center;">
+    TKanAI SDLC Ecosystem — Built for Agile AI-Augmented Software Engineering &copy; 2026
+  </div>
+
+</body>
+</html>
